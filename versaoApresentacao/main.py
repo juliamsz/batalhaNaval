@@ -1,6 +1,6 @@
+# Importações apenas dos módulos necessários
 from jogo import jogar
 from ranking import mostrarRanking
-
 
 def menu():
 

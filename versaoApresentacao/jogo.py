@@ -3,7 +3,7 @@ import random
 from tabuleiro import *
 from ranking import *
 
-
+# Configurações para cada nível de dificuldade
 DIFICULDADES = {
 
     "1": {
@@ -28,6 +28,15 @@ DIFICULDADES = {
 
 
 def escolherDificuldade():
+    """
+    Exibe o menu de dificuldades e retorna a configuração escolhida.
+    
+    Parameters:
+        None
+    
+    Returns:
+        dict: Configuração da dificuldade escolhida.
+    """
     
     while True:
         
@@ -45,6 +54,16 @@ def escolherDificuldade():
 
 
 def tiroCpu(tabuleiro, tirosCpu):
+    """
+    Realiza um tiro aleatório da CPU evitando posições repetidas.
+    
+    Parameters:
+        tabuleiro (list): O tabuleiro do jogador.
+        tirosCpu (set): Conjunto de posições já atiradas pela CPU.
+        
+    Returns:
+        None
+    """
     
     while True:
         
@@ -70,6 +89,15 @@ def tiroCpu(tabuleiro, tirosCpu):
 
 
 def jogar():
+    """
+    Controla o fluxo principal da partida entre jogador e CPU.
+    
+    Parameters:
+        None
+        
+    Returns:
+        None
+    """
 
     nome = input("\nNome: ")
     config = (escolherDificuldade())
@@ -110,6 +138,7 @@ def jogar():
             else:
                 print("\nAgua!")
 
+            # Encerra caso todos os navios da CPU sejam destruídos
             if verificarVitoria(tabuleiroCpu):
                 salvarRanking(nome, "Vitoria", tiros, config["nome"])
                 print("\nVOCE VENCEU!")
@@ -119,6 +148,7 @@ def jogar():
 
             tiroCpu(tabuleiroJogador, tirosCpu)
 
+            # Verifica vitória da CPU após o turno pygame.time.delay()
             if verificarVitoria(tabuleiroJogador):
                 salvarRanking(nome, "Derrota", tiros, config["nome"])
                 print("\nCPU VENCEU!")

@@ -6,3 +6,5 @@ gisele;Vitoria;17;Facil;20/06/2026
 livia;Vitoria;56;Medio;22/06/2026
 julia;Vitoria;34;Medio;22/06/2026
 luiz;Vitoria;58;Medio;22/06/2026
+elisa;Derrota;10;Facil;24/06/2026
+livs;Vitoria;10;Facil;24/06/2026

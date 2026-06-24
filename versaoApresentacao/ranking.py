@@ -1,10 +1,22 @@
 from datetime import datetime
 
-
-ARQUIVO = "batalhaNaval/ranking.txt"
+# Caminho do arquivo onde o ranking é armazenado
+ARQUIVO = "versaoApresentacao/ranking.txt"
 
 
 def salvarRanking(nome, resultado, tiros, dificuldade):
+    """
+    Salva uma partida no arquivo de ranking.
+    
+    Parameters:
+        nome (str): Nome do jogador.
+        resultado (str): Resultado da partida ("Vitoria" ou "Derrota").
+        tiros (int): Número de tiros realizados pelo jogador.
+        dificuldade (str): Dificuldade escolhida pelo jogador.
+        
+    Returns:
+        None
+    """
 
     with open(ARQUIVO, "a", encoding="utf8") as arq:
 
@@ -20,6 +32,15 @@ def salvarRanking(nome, resultado, tiros, dificuldade):
 
 
 def mostrarRanking():
+    """
+    Lê, ordena e exibe o ranking por quantidade de tiros.
+    
+    Parameters:
+        None
+    
+    Returns:
+        None
+    """
 
     try:
 
@@ -32,9 +53,19 @@ def mostrarRanking():
                 ranking.append(linha.strip().split(";"))
 
         def pegarTiros(linha):
+            """
+            Retorna a quantidade de tiros para ordenação.
+            
+            Parameters:
+                linha (list): Uma linha do ranking.
+            
+            Returns:
+                int: Quantidade de tiros.
+            """
             return int(linha[2])
 
 
+        # Ordena do menor número de tiros para o maior
         ranking.sort(key=pegarTiros)
 
         print("\n=== RANKING ===")
@@ -55,4 +86,5 @@ def mostrarRanking():
 
     except FileNotFoundError:
 
+        # Tratamento para primeira execução sem arquivo criado
         print("Nenhum ranking encontrado.")
